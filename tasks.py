@@ -58,3 +58,8 @@ def style_check(ctx):
 @task
 def reformat_code(ctx):
     ctx.run("black .")
+
+
+@task(build)
+def publish(ctx):
+    ctx.run(f"{sys.executable} -m twine upload dist/*")
