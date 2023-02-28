@@ -4,7 +4,7 @@ Library    DiffLibExt
 
 *** Variables ***
 ${data_dir}    ${CURDIR}${/}data
-${error_msg}    *HTML* <b><a href='*__diff__/diff_*.html'>Differences Found</a></b>
+${error_msg}    *HTML* <b><a href='*__diff__${/}diff_*.html'>Differences Found</a></b>
 
 *** Test Cases ***
 test file should be equal pass
