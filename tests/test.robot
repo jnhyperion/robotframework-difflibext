@@ -38,7 +38,7 @@ test dict should be equal pass
     ${text2}=    Get File    ${data_dir}${/}example1.json
     ${dict1}=    Evaluate    json.loads($text1)
     ${dict2}=    Evaluate    json.loads($text2)
-    Dict Should Be Equal    ${dict1}    ${dict2}
+    Object Should Be Equal    ${dict1}    ${dict2}
 
 test dict should be equal raise
     ${text1}=    Get File    ${data_dir}${/}example1.json
@@ -47,7 +47,7 @@ test dict should be equal raise
     ${dict2}=    Evaluate    json.loads($text2)
     Run Keyword And Expect Error
     ...    ${error_msg}
-    ...    Dict Should Be Equal
+    ...    Object Should Be Equal
     ...    ${dict1}
     ...    ${dict2}
 
@@ -58,6 +58,6 @@ test list json obj should be equal raise
     ${dict2}=    Evaluate    json.loads($text2)
     Run Keyword And Expect Error
     ...    ${error_msg}
-    ...    Dict Should Be Equal
+    ...    Object Should Be Equal
     ...    ${dict1}
     ...    ${dict2}
