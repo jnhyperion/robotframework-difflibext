@@ -63,7 +63,7 @@ class DiffLibExt:
             self._report_diff(expected_text, actual_text)
 
     @keyword
-    def dict_should_be_equal(self, expected_dict: dict, actual_dict: dict):
+    def dict_should_be_equal(self, expected_dict, actual_dict):
         if expected_dict != actual_dict:
             expected_json_text = json.dumps(expected_dict, indent=2)
             actual_json_text = json.dumps(actual_dict, indent=2)
