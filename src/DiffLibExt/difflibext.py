@@ -13,7 +13,8 @@ class DiffLibExt:
     ROBOT_LIBRARY_DOC_FORMAT = "ROBOT"
     DIFF_OUT_DIR_NAME = "__diff__"
 
-    def __init__(self):
+    def __init__(self, line_wrap_len: int = 100):
+        self.line_wrap_len = line_wrap_len
         self._builtin_lib = BuiltIn()
 
     @keyword
@@ -32,7 +33,7 @@ class DiffLibExt:
             self._report_diff(expected_file_text, actual_file_text)
 
     def _report_diff(self, expected_text: str, actual_text: str):
-        html_diff = difflib.HtmlDiff().make_file(
+        html_diff = difflib.HtmlDiff(wrapcolumn=self.line_wrap_len).make_file(
             expected_text.splitlines(),
             actual_text.splitlines(),
             fromdesc="Expected:",

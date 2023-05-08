@@ -1,6 +1,6 @@
 *** Settings ***
 Library    OperatingSystem
-Library    DiffLibExt
+Library    DiffLibExt   line_wrap_len=99
 
 *** Variables ***
 ${data_dir}    ${CURDIR}${/}data
