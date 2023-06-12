@@ -18,8 +18,8 @@ Text file compare
 Large text compare
     Text Should Be Equal    ${text1}    ${text2}
 
-Large dict compare
-    Dict Should Be Equal    ${dict1}    ${dict2}
+Large dict/list/object compare
+    Object Should Be Equal    ${dict1}    ${dict2}
 ```
 
 ## Report Differences
