@@ -10,12 +10,12 @@ from dataclasses import asdict, is_dataclass
 
 
 class JSONEncoderExt(json.JSONEncoder):
-    def default(self, obj):
-        if is_dataclass(obj):
-            return asdict(obj)
-        elif hasattr(obj, "__dict__"):
-            return obj.__dict__
-        return json.JSONEncoder.default(self, obj)
+    def default(self, o):
+        if is_dataclass(o):
+            return asdict(o)
+        elif hasattr(o, "__dict__"):
+            return o.__dict__
+        return json.JSONEncoder.default(self, o)
 
 
 class DiffLibExt:
