@@ -6,6 +6,16 @@ import difflib
 from pathlib import Path
 from robot.api.deco import keyword
 from robot.libraries.BuiltIn import BuiltIn
+from dataclasses import asdict, is_dataclass
+
+
+class JSONEncoderExt(json.JSONEncoder):
+    def default(self, obj):
+        if is_dataclass(obj):
+            return asdict(obj)
+        elif hasattr(obj, "__dict__"):
+            return obj.__dict__
+        return json.JSONEncoder.default(self, obj)
 
 
 class DiffLibExt:
@@ -66,6 +76,6 @@ class DiffLibExt:
     @keyword
     def object_should_be_equal(self, expected_obj, actual_obj):
         if expected_obj != actual_obj:
-            expected_json_text = json.dumps(expected_obj, indent=2)
-            actual_json_text = json.dumps(actual_obj, indent=2)
+            expected_json_text = json.dumps(expected_obj, indent=2, cls=JSONEncoderExt)
+            actual_json_text = json.dumps(actual_obj, indent=2, cls=JSONEncoderExt)
             self._report_diff(expected_json_text, actual_json_text)
